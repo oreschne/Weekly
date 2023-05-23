@@ -7,7 +7,7 @@ function Profile() {
     let interestsInput = useRef();
 
     const jwt = useContext(AuthContext);
-    const [profile,setProfile] = useState();
+    const [events,setEvents] = useState();
     
 
     function getActivities() {
@@ -15,7 +15,7 @@ function Profile() {
         var start ; //valuye of start date in datePicker!
         var end; //value of end date in datePicker!
         fetch(`http://localhost:8085/activity?start=${start}&end=${end}`, {method:"GET",headers:headers}).then(silentJSON)
-            .then(response=>{setProfile(response)});
+            .then(response=>{setEvents(response)});
     }
     function updateProfile() {
         const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
