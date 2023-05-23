@@ -10,9 +10,11 @@ function Profile() {
     const [profile,setProfile] = useState();
     
 
-    function getProfile() {
+    function getActivities() {
         const headers = {"Authorization" : "Bearer "+jwt};
-        fetch("http://localhost:8085/profile", {method:"GET",headers:headers}).then(silentJSON)
+        var start ; //valuye of start date in datePicker!
+        var end; //value of end date in datePicker!
+        fetch(`http://localhost:8085/activity?start=${start}&end=${end}`, {method:"GET",headers:headers}).then(silentJSON)
             .then(response=>{setProfile(response)});
     }
     function updateProfile() {
