@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import './App.css'
 import AuthContext from './AuthContext'
 import Home from './Home'
-import Profile from './Profile'
+import Profile from './Activities'
 
 function App() {
   const [jwt,setJwt] = useState('');
