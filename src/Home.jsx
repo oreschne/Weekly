@@ -16,7 +16,7 @@ function Home({setJwt}) {
         }).then(processText).then(confirmLogin).catch(() => { alert("Login failed"); });
     }
     function handleNewAccount(user) {
-    fetch('http://localhost:8085/user/create', {
+    fetch('http://localhost:8085/user/iduser', {
         method: 'POST',
         body: JSON.stringify(user),
         headers: {
