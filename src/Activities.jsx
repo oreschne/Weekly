@@ -28,8 +28,13 @@ function Profile() {
         }).then(response => processAlert(response,"Activity Posted."));
     }
 
-    function deleteActivity(){
+    function userActivities(){
         
+        //http://localhost:8085/activity
+    }
+
+    function deleteActivity(){
+        //http://localhost:8085/activity/<id>
     }
 
     function updateProfile() {
