@@ -17,6 +17,21 @@ function Profile() {
         fetch(`http://localhost:8085/activity?start=${start}&end=${end}`, {method:"GET",headers:headers}).then(silentJSON)
             .then(response=>{setEvents(response)});
     }
+
+    function postActivities() {
+        const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
+        const toPost = {title:"get title from doct below", description:"getdescriptionfromdocbelow", start:"getfrom DatePicker", end:"getFRom DatePicker"};
+        fetch("http://localhost:8085/activity", {
+            method: "POST",
+            body: JSON.stringify(toPost),
+            headers: headers
+        }).then(response => processAlert(response,"Activity Posted."));
+    }
+
+    function deleteActivity(){
+        
+    }
+
     function updateProfile() {
         const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
         const toPost = {fullname:nameInput.current.value,interests:interestsInput.current.value};
