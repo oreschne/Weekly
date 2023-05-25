@@ -29,12 +29,19 @@ function Profile() {
     }
 
     function userActivities(){
-        
-        //http://localhost:8085/activity
+        const headers = {"Authorization" : "Bearer "+jwt};
+        fetch(`http://localhost:8085/activity`, {method:"GET",headers:headers}).then(silentJSON)
+            .then(response=>{setEvents(response)});
     }
 
     function deleteActivity(){
         //http://localhost:8085/activity/<id>
+        //const id = idOfActivity HOWTO?
+        const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
+        fetch(`http://localhost:8085/activity/${id}`, {
+            method: "DELETE",
+            headers: headers
+        }).then(response => processAlert(response,"Activity Deleted."));
     }
 
     function updateProfile() {
