@@ -90,6 +90,11 @@ function Activities() {
             <h4>Create your Activity</h4>
             <p>Your name: <input type="text" ref={titleInput} /></p>
             <p>Description: <input type="text" ref={descInput} /></p>
+            <DateTimePicker
+                label="Controlled picker"
+                value={value}
+                onChange={(newValue) => setValue(newValue)}
+            />
             <p>Choose Date: </p>
             <p><button onClick={postActivities}>Create Activity</button></p>
             </>
