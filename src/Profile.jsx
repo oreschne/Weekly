@@ -29,15 +29,22 @@ function Profile() {
             headers: headers
         }).then(response => processAlert(response,"Profile updated."));
     }
-    function createProfile() {
-        const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
-        const toPost = {login:nameInput.current.value,password:passInput.current.value,fullName:fullName.current.input};
-        fetch("http://localhost:8085/user/create", {
-            method: "POST",
-            body: JSON.stringify(toPost),
-            headers: headers
-        }).then(response => processAlert(response,"Profile created."));
+
+    function userActivities(){
+        const headers = {"Authorization" : "Bearer "+jwt};
+        fetch(`http://localhost:8085/activity`, {method:"GET",headers:headers}).then(silentJSON)
+            .then(response=>{setEvents(response)});
     }
+    
+    // function createProfile() {
+    //     const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
+    //     const toPost = {login:nameInput.current.value,password:passInput.current.value,fullName:fullName.current.input};
+    //     fetch("http://localhost:8085/user/create", {
+    //         method: "POST",
+    //         body: JSON.stringify(toPost),
+    //         headers: headers
+    //     }).then(response => processAlert(response,"Profile created."));
+    // }
 
     if(jwt.length == 0)
         return (

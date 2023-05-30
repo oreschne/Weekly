@@ -69,7 +69,6 @@ function Activities() {
     //     }).then(response => processAlert(response,"Profile created."));
     // }
 
-    //need change 'edit profile' 
     if(jwt.length == 0)
         return (
             <p>You are not logged in to your account.</p>
