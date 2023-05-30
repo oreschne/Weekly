@@ -31,14 +31,16 @@ function Home({setJwt}) {
 
     let nameInput = useRef();
     let passwordInput = useRef();
+    let loginInput = useRef();
 
-    const loginAction = (e) => { handleLogin({name:nameInput.current.value,password:passwordInput.current.value}); }
-    const newAction = (e) => { handleNewAccount({name:nameInput.current.value,password:passwordInput.current.value}); }
+    const loginAction = (e) => { handleLogin({login:loginInput.current.value,password:passwordInput.current.value}); }
+    const newAction = (e) => { handleNewAccount({login:loginInput.current.value,password:passwordInput.current.value, name:nameInput.current.value}); }
   return (
     <div>
         <h2>Welcome to our application!</h2>
         <h4>Log in to your account</h4>
-        <p>User name: <input type="text" ref={nameInput} /></p>
+        <p>Full name: <input type="text" ref={nameInput} /></p>
+        <p>Login Username: <input type="text" ref={loginInput}/></p>
         <p>Password: <input type="text" ref={passwordInput} /></p>
         <p><button onClick={loginAction}>Log In</button><button onClick={newAction}>New Account</button></p>
         <h4>Log out of your account</h4>
