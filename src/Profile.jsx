@@ -1,7 +1,7 @@
 import { useState,useRef,useEffect,useContext } from "react";
 import AuthContext from "./AuthContext";
 import { silentJSON, processAlert } from "./FetchRoutines";
-import { handleLogin, handleNewAccount } from "./Home";
+//import { handleLogin, handleNewAccount } from "./Home";
 function Profile() {
 
     //im pretty sure we don't need to touch this anymore, BUT we might so keep it in mind.

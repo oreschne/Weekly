@@ -7,7 +7,7 @@ import profile from "./Profile";
 //note: i moved the profile stuff to it's own .jsx file. we should possibly(?) remove it from here -evan 
 
 function Activities() {
-    useEffect(() => {getProfile()},[]);
+    //useEffect(() => {getProfile()},[]);
     let titleInput = useRef();
     let interestsInput = useRef();
     let descInput = useRef();
