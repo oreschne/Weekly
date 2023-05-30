@@ -22,7 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home setJwt={setJwt} />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/activites" element={<Activities />} />
+            <Route path="/activities" element={<Activities />} />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
