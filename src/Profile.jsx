@@ -1,6 +1,7 @@
 import { useState,useRef,useEffect,useContext } from "react";
 import AuthContext from "./AuthContext";
 import { silentJSON, processAlert } from "./FetchRoutines";
+import { handleLogin, handleNewAccount } from "./Home";
 function Profile() {
 
     //im pretty sure we don't need to touch this anymore, BUT we might so keep it in mind.
@@ -8,6 +9,7 @@ function Profile() {
     useEffect(() => {getProfile()},[]);
     let nameInput = useRef();
     let passInput = useRef();
+    let fullName = useRef();
 
     const jwt = useContext(AuthContext);
     const [profile,setProfile] = useState();
@@ -20,7 +22,7 @@ function Profile() {
     }
     function updateProfile() {
         const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
-        const toPost = {fullname:nameInput.current.value};
+        const toPost = {login:nameInput.current.value,password:passInput.current.value,fullName:fullName.current.input};
         fetch("http://localhost:8085/user/update", {
             method: "POST",
             body: JSON.stringify(toPost),
@@ -29,7 +31,7 @@ function Profile() {
     }
     function createProfile() {
         const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
-        const toPost = {fullname:nameInput.current.value};
+        const toPost = {login:nameInput.current.value,password:passInput.current.value,fullName:fullName.current.input};
         fetch("http://localhost:8085/user/create", {
             method: "POST",
             body: JSON.stringify(toPost),
