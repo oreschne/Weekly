@@ -1,10 +1,15 @@
 import { useState,useRef,useEffect,useContext } from "react";
 import AuthContext from "./AuthContext";
 import { silentJSON, processAlert } from "./FetchRoutines";
-function Profile() {
+//import DatePicker from "react-datepicker";
+
+//note: i moved the profile stuff to it's own .jsx file. we should possibly(?) remove it from here -evan 
+
+function Activities() {
     useEffect(() => {getProfile()},[]);
-    let nameInput = useRef();
+    let titleInput = useRef();
     let interestsInput = useRef();
+    let descInput = useRef();
 
     const jwt = useContext(AuthContext);
     const [events,setEvents] = useState();
@@ -20,7 +25,7 @@ function Profile() {
 
     function postActivities() {
         const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
-        const toPost = {title:"get title from doct below", description:"getdescriptionfromdocbelow", start:"getfrom DatePicker", end:"getFRom DatePicker"};
+        const toPost = {title:titleInput.current.value, description:descInput.current.value, start:"getfrom DatePicker", end:"getFRom DatePicker"};
         fetch("http://localhost:8085/activity", {
             method: "POST",
             body: JSON.stringify(toPost),
@@ -35,7 +40,7 @@ function Profile() {
     }
 
     function deleteActivity(){
-        //http://localhost:8085/activity/<id>
+        //http://localhost:8085/activity/<id>  <-- idactivity?
         //const id = idOfActivity HOWTO?
         const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
         fetch(`http://localhost:8085/activity/${id}`, {
@@ -44,29 +49,31 @@ function Profile() {
         }).then(response => processAlert(response,"Activity Deleted."));
     }
 
-    function updateProfile() {
-        const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
-        const toPost = {fullname:nameInput.current.value,interests:interestsInput.current.value};
-        fetch("http://localhost:8085/profile/update", {
-            method: "POST",
-            body: JSON.stringify(toPost),
-            headers: headers
-        }).then(response => processAlert(response,"Profile updated."));
-    }
-    function createProfile() {
-        const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
-        const toPost = {fullname:nameInput.current.value,interests:interestsInput.current.value};
-        fetch("http://localhost:8085/profile/create", {
-            method: "POST",
-            body: JSON.stringify(toPost),
-            headers: headers
-        }).then(response => processAlert(response,"Profile created."));
-    }
+    // function updateProfile() {
+    //     const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
+    //     const toPost = {fullname:nameInput.current.value,interests:interestsInput.current.value};
+    //     fetch("http://localhost:8085/profile/update", {
+    //         method: "POST",
+    //         body: JSON.stringify(toPost),
+    //         headers: headers
+    //     }).then(response => processAlert(response,"Profile updated."));
+    // }
+    // function createProfile() {
+    //     const headers = {"Authorization" : "Bearer "+jwt,"Content-type" : "application/json; charset=UTF-8"};
+    //     const toPost = {fullname:nameInput.current.value,interests:interestsInput.current.value};
+    //     fetch("http://localhost:8085/profile/create", {
+    //         method: "POST",
+    //         body: JSON.stringify(toPost),
+    //         headers: headers
+    //     }).then(response => processAlert(response,"Profile created."));
+    // }
 
+    //need change 'edit profile' 
     if(jwt.length == 0)
         return (
             <p>You are not logged in to your account.</p>
         );
+        
     else if(profile)
         return (
             <>
@@ -77,12 +84,14 @@ function Profile() {
         );
     else
         return (
+            //once we have datepicker in, need add "select time/date" here
             <>
-            <h4>Create your profile</h4>
-            <p>Your name: <input type="text" ref={nameInput} /></p>
-            <p><button onClick={createProfile}>Create Profile</button></p>
+            <h4>Create your Activity</h4>
+            <p>Your name: <input type="text" ref={titleInput} /></p>
+            <p>Description: <input type="text" ref={descInput} /></p>
+            <p><button onClick={postActivities}>Create Activity</button></p>
             </>
         );
 }
 
-export default Profile;
+export default Activities;
