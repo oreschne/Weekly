@@ -2,6 +2,7 @@ import { useState,useRef,useEffect,useContext } from "react";
 import AuthContext from "./AuthContext";
 import { silentJSON, processAlert } from "./FetchRoutines";
 //import DatePicker from "react-datepicker";
+import profile from "./Profile";
 
 //note: i moved the profile stuff to it's own .jsx file. we should possibly(?) remove it from here -evan 
 
@@ -89,6 +90,7 @@ function Activities() {
             <h4>Create your Activity</h4>
             <p>Your name: <input type="text" ref={titleInput} /></p>
             <p>Description: <input type="text" ref={descInput} /></p>
+            <p>Choose Date: </p>
             <p><button onClick={postActivities}>Create Activity</button></p>
             </>
         );
