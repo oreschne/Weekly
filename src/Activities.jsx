@@ -75,14 +75,6 @@ function Activities() {
             <p>You are not logged in to your account.</p>
         );
         
-    else if(profile)
-        return (
-            <>
-            <h4>Edit your profile</h4>
-            <p>Your name: <input type="text" ref={nameInput} defaultValue={profile.fullname} /></p>
-            <p><button onClick={updateProfile}>Update Profile</button></p>
-            </>
-        );
     else
         return (
             //once we have datepicker in, need add "select time/date" here
