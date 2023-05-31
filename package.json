@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "react": "^18.2.0",
+<<<<<<< HEAD
+    "react-datetimepicker": "^2.0.0",
+=======
     "react-datepicker": "^4.12.0",
+>>>>>>> 77e2b877c5bbc138e2f64b1ef16b9f6cc139164c
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2"
   },
