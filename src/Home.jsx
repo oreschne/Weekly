@@ -34,7 +34,7 @@ function Home({setJwt}) {
     let loginInput = useRef();
 
     const loginAction = (e) => { handleLogin({login:loginInput.current.value,password:passwordInput.current.value}); }
-    const newAction = (e) => { handleNewAccount({login:loginInput.current.value,password:passwordInput.current.value, name:nameInput.current.value}); }
+    const newAction = (e) => { handleNewAccount({login:loginInput.current.value,password:passwordInput.current.value, name:nameInput.current.value});  alert("Account Created."); }
   return (
     <div>
         <h2>Welcome to our application!</h2>
