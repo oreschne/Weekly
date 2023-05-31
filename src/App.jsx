@@ -5,6 +5,7 @@ import AuthContext from './AuthContext'
 import Home from './Home'
 import Activities from './Activities'
 import Profile from './Profile'
+import Agenda from './agenda'
 
 
 function App() {
