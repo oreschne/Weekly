@@ -79,6 +79,7 @@ function Activities() {
             <p><button onClick={postActivities}>Create Activity</button></p>
             </>
         );
+        
 }
 
 export default Activities;
