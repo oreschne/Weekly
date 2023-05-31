@@ -53,21 +53,21 @@ function Profile() {
     else if(profile)
         return (
             <>
-            <h4>Edit your profile</h4>
+            <h4>Check your Activites: </h4>
             <p>Your name: <input type="text" ref={nameInput} defaultValue={user.name} /></p>
             <p>Your Password: <input type="text" ref={passInput} defaultValue={user.password} /></p>
-            <p><button onClick={updateProfile}>Update Profile</button></p>
+            <p><button onClick={userActivities}>Check Activites</button></p>
             </>
         );
-    else
-        return (
-            <>
-            <h4>Create your profile</h4>
-            <p>Your name: <input type="text" ref={nameInput} /></p>
-            <p>Your Password: <input type="text" ref={passInput} /></p>
-            <p><button onClick={createProfile}>Create Profile</button></p>
-            </>
-        );
+    // else
+    //     return (
+    //         <>
+    //         <h4>Create your profile</h4>
+    //         <p>Your name: <input type="text" ref={nameInput} /></p>
+    //         <p>Your Password: <input type="text" ref={passInput} /></p>
+    //         <p><button onClick={createProfile}>Create Profile</button></p>
+    //         </>
+    //     );
 }
 
 export default Profile;
