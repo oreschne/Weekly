@@ -37,7 +37,7 @@ function Home({setJwt}) {
     const newAction = (e) => { handleNewAccount({login:loginInput.current.value,password:passwordInput.current.value, name:nameInput.current.value}); }
   return (
     <div>
-        <h2>Welcome to our application!</h2>
+        <h2>Welcome to Weekly!</h2>
         <h4>Log in to your account</h4>
         <p>Full name: <input type="text" ref={nameInput} /></p>
         <p>Login Username: <input type="text" ref={loginInput}/></p>
