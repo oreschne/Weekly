@@ -12,22 +12,37 @@ function Agenda(){
     function fetchAgenda(){
         fetch("http://localhost:8085/activity")
         .then(silentJSON)
-        .then(response => setEvents(response));
+        .then(response => setEvents(response))
+        .catch(error => {
+            console.error('Error Fetching Agenda', error);
+        });
     }
 
     return (
         <div>
-            <h4>All Posted Activities</h4>
-            {events.map(activity =>(
-                <div key={activity.id}>
-                    <h5>{activity.title}</h5>
-                    <p>Description: {activity.description}</p>
-                    <p>Start: {activity.start}</p>
-                    <p>End: {activity.end}</p>
-                 </div>   
-            ))}
+          <h4>All Posted Activities</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Start</th>
+                <th>End</th>
+              </tr>
+            </thead>
+            <tbody>
+              {events.map(activity => (
+                <tr key={activity.id}>
+                  <td>{activity.title}</td>
+                  <td>{activity.description}</td>
+                  <td>{activity.start}</td>
+                  <td>{activity.end}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-    );
+      );
 
 
 }
